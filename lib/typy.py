@@ -8,26 +8,29 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 from peewee import *
+import logging
+import sys
 
 # POSTGRESQL SETUP
-db = PostgresqlDatabase('typy', user='postgres', password='', host='localhost', port=5423)
 
-class BaseModel(Model):
-  class Meta:
-    database = db
+# db = PostgresqlDatabase('typy', user='postgres', password='', host='localhost', port=5423)
 
-class Note(BaseModel):
-  id = IntegerField()
-  name = CharField()
-  author = CharField()
-  date = CharField()
+# class BaseModel(Model):
+#   class Meta:
+#     database = db
 
-db.connect()
-db.drop_tables([Note])
-db.create_tables([Note])
+# class Note(BaseModel):
+#   id = IntegerField()
+#   name = CharField()
+#   author = CharField()
+#   date = CharField()
 
-Note(id=1, name='README 2: ELECTRIC BOOGALOO', author='Person McPersonface', date='4/20/1969').save()
-Note(id=2, name='REVENGE OF THE NOTES', author='Literally Jesus', date='12/25/ZERO').save()
+# db.connect()
+# db.drop_tables([Note])
+# db.create_tables([Note])
+
+# Note(id=1, name='README 2: ELECTRIC BOOGALOO', author='Person McPersonface', date='4/20/1969').save()
+# Note(id=2, name='REVENGE OF THE NOTES', author='Literally Jesus', date='12/25/ZERO').save()
 
 app = Flask(__name__)
 
@@ -63,19 +66,29 @@ def endpoint():
 # FUNCTIONALITY WILL BE INSTANTIATED VIA ROUTING.
 
 # CREATE ----- @app.route('/new/<name>')
+@app.route('/new/<name>', methods=['GET', 'PUT', 'POST'])
+def note_create(name):
+    return f'CREATE NOTE NAMED {name}'
 
 
 
 # READ ------- @app.route('/list/<name>')  ---- NOTE: "READ" MEANS READ OUT THE LIST OF NOTES
+@app.route('/list/', methods=['GET'])
+def note_list():
+    return f'LIST ALL NOTES'
 
 
 
 # UPDATE ----- @app.route('/open/<name>') ----- NOTE: "UPDATE" MEANS OPEN A PREEXISTING NOTE, WITH THE ABILITY TO MODIFY IT
-
+@app.route('/open/<name>', methods=['GET', 'PUT', 'POST'])
+def note_open(name):
+    return f'OPEN {name} FOR EDITING'
 
 
 # DESTROY ---- @app.route('/delete/<name>')
-
+@app.route('/delete/<name>', methods=['GET', 'POST', 'DELETE'])
+def note_delete(name):
+    return f'DELETE {name} - ARE YOU SURE?'
 
 
 
