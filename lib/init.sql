@@ -1,5 +1,7 @@
 BEGIN;
 
+DROP TABLE notes;
+
 CREATE TABLE notes(
     id integer NOT NULL,
     name text NOT NULL,

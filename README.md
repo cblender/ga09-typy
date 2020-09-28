@@ -1,10 +1,12 @@
 # TyPy
 
-TyPy is a python command-line typewriter. It leverages Flask for python and Postgres for SQL to allow the user to create, store, view, edit, and delete notes for themselves. Each new note is created as its own table within the database, and each line within the note is a row within the table. The user is given access to a set of commands that can be entered in the browser console to perform actions related to the notes, as follows:
+(pronounced like "sleepy")
 
-## Pages
+TyPy is a python command-line typewriter. It is line-based, and leverages Flask for python and Postgres for SQL to allow the user to create, store, view, edit, and delete notes for themselves. Each new note is created as its own table within the database, and each line within the note is a row within the table.
 
-The TyPy application makes use of two webages.
+## How to Operate a Python Typewriter
+
+The TyPy application makes use of two webages. The user is given access to a set of commands that can be entered in the console to perform actions related to the notes, as follows:
 
 &nbsp;
 
