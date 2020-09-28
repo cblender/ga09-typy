@@ -1,7 +1,5 @@
 BEGIN;
 
-DROP TABLE notes;
-
 CREATE TABLE notes(
     id integer NOT NULL,
     name text NOT NULL,
@@ -10,7 +8,7 @@ CREATE TABLE notes(
 );
 
 INSERT INTO notes (id, name, author, date)
-VALUES(id=1, name='README', author='Chris Blendermann', date='9/28/2020');
+VALUES(1, 'README', 'Chris Blendermann', '9/28/2020');
 
 ALTER TABLE ONLY notes
     ADD CONSTRAINT notes_pkey PRIMARY KEY (name);

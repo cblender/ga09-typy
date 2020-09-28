@@ -1,15 +1,16 @@
-import requests
-
-response = requests.get('https://httpbin.org/ip')
-
-print('Your IP is {0}'.format(response.json()['origin']))
-
 from flask import Flask
 from flask import request
 from flask import jsonify
 from peewee import *
 import logging
+import psycopg2
+import requests
 import sys
+
+response = requests.get('https://httpbin.org/ip')
+
+print('Your IP is {0}'.format(response.json()['origin']))
+
 
 # # POSTGRESQL SETUP
 db = PostgresqlDatabase('typy', user='cblender', password='', host='localhost', port=5423)
@@ -23,6 +24,11 @@ class Note(BaseModel):
   name = CharField()
   author = CharField()
   date = CharField()
+
+class Line(BaseModel):
+    id = IntegerField()
+    content = CharField()
+
 
 db.connect()
 db.drop_tables([Note])
@@ -67,6 +73,8 @@ def note_create(name):
     id = 1
 
     Note.create(id=f'{id}', name=f'{name}', author=f'{author}', date=f'{date}')
+
+    db.create_tables([Note])
 
     return f'CREATE NOTE NAMED {name}'
 
@@ -115,6 +123,7 @@ def note_list():
 
     return f'LIST ALL NOTES'
 
+# ——————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
