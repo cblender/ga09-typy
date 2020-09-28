@@ -11,26 +11,25 @@ from peewee import *
 import logging
 import sys
 
-# POSTGRESQL SETUP
+# # POSTGRESQL SETUP
+db = PostgresqlDatabase('typy', user='cblender', password='', host='localhost', port=5000)
 
-# db = PostgresqlDatabase('typy', user='postgres', password='', host='localhost', port=5423)
+class BaseModel(Model):
+  class Meta:
+    database = db
 
-# class BaseModel(Model):
-#   class Meta:
-#     database = db
+class Note(BaseModel):
+  id = IntegerField()
+  name = CharField()
+  author = CharField()
+  date = CharField()
 
-# class Note(BaseModel):
-#   id = IntegerField()
-#   name = CharField()
-#   author = CharField()
-#   date = CharField()
+db.connect()
+db.drop_tables([Note])
+db.create_tables([Note])
 
-# db.connect()
-# db.drop_tables([Note])
-# db.create_tables([Note])
-
-# Note(id=1, name='README 2: ELECTRIC BOOGALOO', author='Person McPersonface', date='4/20/1969').save()
-# Note(id=2, name='REVENGE OF THE NOTES', author='Literally Jesus', date='12/25/ZERO').save()
+Note(id=1, name='README 2: ELECTRIC BOOGALOO', author='Person McPersonface', date='4/20/1969').save()
+Note(id=2, name='REVENGE OF THE NOTES', author='Literally Jesus', date='12/25/ZERO').save()
 
 app = Flask(__name__)
 
@@ -43,21 +42,23 @@ def index():
 def hello(name):
     return f'Hello, {name}!'
 
+
+
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # THIS CODE IS *** C O N D E M N E D ***
-@app.route('/endpoint', methods=['GET', 'PUT', 'POST', 'DELETE'])
-def endpoint():
-    if request.method == 'GET':
-        return 'GET request'
+# @app.route('/endpoint', methods=['GET', 'PUT', 'POST', 'DELETE'])
+# def endpoint():
+#     if request.method == 'GET':
+#         return 'GET request'
     
-    if request.method == 'PUT':
-        return 'PUT request'
+#     if request.method == 'PUT':
+#         return 'PUT request'
 
-    if request.method == 'POST':
-        return 'POST request'
+#     if request.method == 'POST':
+#         return 'POST request'
 
-    if request.method == 'DELETE':
-        return 'DELETE request'
+#     if request.method == 'DELETE':
+#         return 'DELETE request'
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
