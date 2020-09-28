@@ -16,7 +16,7 @@ This page shows a list of all notes in the database, along with associated metad
 
 &nbsp;
 
-### \create
+### :create
 
 #### Arguments: "filename", "author", "date"
 
@@ -24,7 +24,7 @@ Creates a new note. Prompts the user to enter, in order, the name, author, and d
 
 &nbsp;
 
-### \open
+### :open
 
 #### Arguments: "filename"
 
@@ -32,7 +32,7 @@ Opens a specific note. The user can specify a note name or id, and the app will 
 
 &nbsp;
 
-### \rename
+### :rename
 
 #### Arguments: "filename", "new name"
 
@@ -44,7 +44,7 @@ Add methods to edit all metadata values for a note. Also, implement timestamping
 
 &nbsp;
 
-### \trash
+### :trash
 
 #### Arguments: "filename"
 
@@ -62,7 +62,7 @@ This page displays the contents of a single note, and gives the user access to s
 
 &nbsp;
 
-### \new
+### :new
 
 #### Arguments: "some text"
 
@@ -74,15 +74,15 @@ The command can take an additional argument that specifies a line number. The ne
 
 &nbsp;
 
-### \edit
+### :edit
 
 #### Arguments: "line number", "some text"
 
-This command alters the contents of an existing line. The user must specify the line to be edited by line number, and is then prompted to enter text similarly to the "\new" command.
+This command alters the contents of an existing line. The user must specify the line to be edited by line number, and is then prompted to enter text similarly to the ":new" command.
 
 &nbsp;
 
-### \delete
+### :delete
 
 #### "line number", "quantity of lines"
 
@@ -95,10 +95,10 @@ Specifying "ALL" instead of a quantity of lines will delete the first specified 
 
 &nbsp;
 
-### \close
+### :close
 
 This command returns the user to the Contents page. All changes are automatically saved as soon as they are made (assuming the database server doesn't crash).
 
 #### Stretch Goal: Close Without Saving
 
-Additional functionality could be added where the "active" note is slotted into a temporary table that simulates computer memory, allowing the user to choose either to save or not save when they \close the note. If the user chooses to save, the original note is overwritten with the live version.
+Additional functionality could be added where the "active" note is slotted into a temporary table that simulates computer memory, allowing the user to choose either to save or not save when they :close the note. If the user chooses to save, the original note is overwritten with the live version.

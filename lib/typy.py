@@ -49,9 +49,32 @@ def hello(name):
     return f'Hello, {name}!'
 
 
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# THE GREAT COMMAND HANDLER FUNCTION
+# create, open, rename, trash, new, edit, delete, close
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-# PLANNING!
-# FUNCTIONALITY WILL BE INSTANTIATED VIA ROUTING.
+def commandsContent(i):
+    if (':create'):
+        # do the thing
+    elif (':open'):
+        # do the thing
+    elif (':rename'):
+        # do the thing
+    elif (':trash'):
+        # do the thing
+
+def commandsDisplay(i):
+    if (':new'):
+        # do the thing
+    elif (':edit'):
+        # do the thing
+    elif (':delete'):
+        # do the thing
+    elif (':close'):
+        # do the thing
+
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
